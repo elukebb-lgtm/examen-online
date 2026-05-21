@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Examen con Timer y Control de Preguntas</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1 { color: #333; }
+    .pregunta { display: none; margin-bottom: 20px; }
+    .resultado { font-weight: bold; margin-top: 20px; font-size: 22px; padding: 15px; border-radius: 10px; }
+    #timer { font-size: 18px; color: red; margin-bottom: 15px; }
+    button { padding: 10px 15px; background: #007BFF; color: white; border: none; cursor: pointer; margin-top: 10px; }
+    button:hover { background: #0056b3; }
+  </style>
+</head>
+<body>
+
+<h1>Examen de opción múltiple</h1>
+<div id="timer">Tiempo restante: 120 segundos</div>
+
+<form id="examen">
+
+  <div class="pregunta" id="p1">
+      <p>1. ¿Cuál es la pensión en la que se requiere que el asegurado haya cumplido 65 años de edad y el Instituto le reconozca un mínimo 
+de 1000 cotizaciones semanales para 2031? </p>
+      <label><input type="radio" name="p1" value="a"> Garantizada</label><br>
+      <label><input type="radio" name="p1" value="b"> Vejez</label><br>
+      <label><input type="radio" name="p1" value="c"> Cesantía en edad avanzada</label><br>
+    <button type="button" onclick="siguiente()">Siguiente pregunta</button>
+  </div>
+
+ <div class="pregunta" id="p2">
+      <p>2. ¿Cuándo entró en vigor la Ley del Seguro Social vigente? </p>
+      <label><input type="radio" name="p2" value="a"> 24 de abril de 1972</label><br>
+      <label><input type="radio" name="p2" value="b"> 1 de julio de 1997</label><br>
+      <label><input type="radio" name="p2" value="c"> 31 de abril de 2007</label><br>
+    <button type="button" onclick="siguiente()">Siguiente pregunta</button>
+  </div>
+
+ <div class="pregunta" id="p3">
+      <p>3. ¿Cuál es el destino de los recursos de los fondos de la subcuenta de vivienda cuando no fueron utilizados por el trabajador para un crédito hipotecario?</p>
+      <label><input type="radio" name="p3" value="a"> Son transferidos a las administradoras de fondos para el retiro para la contratación de la pensión correspondiente</label><br>
+      <label><input type="radio" name="p3" value="b"> Se destinan para el financiamiento de la construcción de conjuntos de habitaciones para ser adquiridos por los trabajadores</label><br>
+      <label><input type="radio" name="p3" value="c"> Son designados para otorgar créditos a los trabajadores derechohabientes que sean titulares de depósitos constituidos a su favor en el instituto</label><br>
+    <button type="button" onclick="siguiente()">Finalizar</button>
+  </div>
+
+<div class="pregunta" id="p4">
+      <p>4. A partir del __________ los trabajadores que hayan cotizado 30 años o más y las trabajadoras que hayan cotizado 28 años o 
+más, tendrán derecho a pensión por jubilación, siempre que cumplan con una edad mínima </p>
+      <label><input type="radio" name="p4" value="a"> 31 de marzo de 2007</label><br>
+      <label><input type="radio" name="p4" value="b"> 1 de enero de 2008</label><br>
+      <label><input type="radio" name="p4" value="c"> 1 de enero de 2010</label><br>
+    <button type="button" onclick="siguiente()">Siguiente pregunta</button>
+  </div>
+
+<div class="pregunta" id="p5">
+      <p>5. ¿Cuántos estados de cuenta deberá enviar la Afore a los trabajadores afiliados y a los trabajadores no afiliados? </p>
+      <label><input type="radio" name="p5" value="a"> Uno al año</label><br>
+      <label><input type="radio" name="p5" value="b"> Seis de forma bimestral</label><br>
+      <label><input type="radio" name="p5" value="c"> Por lo menos tres veces al año de forma cuatrimestral</label><br>
+    <button type="button" onclick="siguiente()">Siguiente pregunta</button>
+  </div>
+
+<div class="pregunta" id="p6">
+      <p>6. El derecho del trabajador y en su caso, de los beneficiarios para recibir los recursos de su cuenta individual del seguro de retiro, cesantía en edad avanzada y vejez prescriben en _________ a favor del ISSSTE a partir de que sean exigibles. </p>
+      <label><input type="radio" name="p6" value="a"> un año</label><br>
+      <label><input type="radio" name="p6" value="b"> cinco años</label><br>
+      <label><input type="radio" name="p6" value="c"> diez años</label><br>
+    <button type="button" onclick="siguiente()">Siguiente pregunta</button>
+  </div>
+
+<div class="pregunta" id="p7">
+      <p>7. Los Bonos de Pensión del ISSSTE tienen la característica de ser títulos: </p>
+      <label><input type="radio" name="p7" value="a"> no negociables y tradicionales expresados en unidades de inversión</label><br>
+      <label><input type="radio" name="p7" value="b"> cupón cero, cada uno con un valor nominal de 100 unidades de inversión y pueden ser enajenables</label><br>
+      <label><input type="radio" name="p7" value="c"> cupón cero, cada uno con un valor nominal de 100 unidades de inversión y no negociables </label><br>
+    <button type="button" onclick="siguiente()">Siguiente pregunta</button>
+  </div>
+
+<div class="pregunta" id="p8">
+      <p>8. Son las principales características de la pensión garantizada ISSSTE: </p>
+      <label><input type="radio" name="p8" value="a"> Se otorga a quienes reúnan los requisitos para obtener una pensión por cesantía en edad avanzada o vejez y su monto originalmente fijado es de $3,034.20 actualizables anualmente</label><br>
+      <label><input type="radio" name="p8" value="b"> Es un apoyo para las finanzas personales de los afiliados al ISSSTE, se otorga hasta por $36,800 y para calcular el monto se considera el sueldo básico y la antigüedad del trabajador</label><br>
+      <label><input type="radio" name="p8" value="c"> Las cuotas están determinadas bajo el procedimiento de la CONSAR y para calcular el monto se considera la edad del trabajador</label><br>
+    <button type="button" onclick="siguiente()">Siguiente pregunta</button>
+  </div>
+
+ <div class="pregunta" id="p9">
+      <p>9. Los trabajadores que tengan 60 años o más recibirán una pensión garantizada que el Estado asegura. El artículo 4 transitorio del 
+decreto de la Ley del Seguro Social y de la Ley del SAR establece que el requisito para los trabajadores es contar con un mínimo 
+de ______ semanas cotizadas a partir del 1 de enero de 2021, aumentando 25 por cada año hasta llegar a 1000 en el 2031. </p>
+      <label><input type="radio" name="p9" value="a"> 825</label><br>
+      <label><input type="radio" name="p9" value="b"> 750</label><br>
+      <label><input type="radio" name="p9" value="c"> 1250</label><br>
+    <button type="button" onclick="siguiente()">Siguiente pregunta</button>
+  </div>
+
+ <div class="pregunta" id="p10">
+      <p>10. Un trabajador que fue dado de baja ante el IMSS, para que de manera voluntaria pueda continuar en el régimen obligatorio de 
+la Ley del Seguro Social, tiene el beneficio que podrá:  </p>
+      <label><input type="radio" name="p10" value="a"> continuar con los seguros de invalidez y vida, así como de retiro, cesantía en edad avanzada y vejez, siempre y cuando quede inscrito con el último salario o superior al que tenía en el momento de la baja</label><br>
+      <label><input type="radio" name="p10" value="b"> pedir la continuación voluntaria en todos o alguno de los seguros del régimen obligatorio si está pensionado, con excepción del seguro 
+de riesgos de trabajo</label><br>
+      <label><input type="radio" name="p10" value="c"> solicitar la continuación voluntaria dentro de los 60 días siguientes al de la baja del empleo. </label><br>
+    <button type="button" onclick="siguiente()">Siguiente pregunta</button>
+  </div>
+
+<div class="pregunta" id="p11">
+      <p>11. En caso del fallecimiento del titular, el beneficiario tendrá derecho al 90% de la pensión que hubiera correspondido al asegurado 
+en el caso de Invalidez o de la correspondiente a la persona pensionada. El derecho de esta pensión, no se contrapone aun si el 
+beneficiario desempeñe un trabajo remunerado. ¿A qué tipo de pensión se hace referencia?  </p>
+      <label><input type="radio" name="p11" value="a"> Cesantía en edad avanzada y vejez</label><br>
+      <label><input type="radio" name="p11" value="b"> Garantizada</label><br>
+      <label><input type="radio" name="p11" value="c"> Viudez</label><br>
+    <button type="button" onclick="siguiente()">Siguiente pregunta</button>
+  </div>
+
+ <div class="pregunta" id="p12">
+      <p>12.  La pensión ___________ de los trabajadores ISSSTE, tiene un monto mensual $3,034.20, el cual se actualizará anualmente cada 
+mes de febrero conforme al cambio anualizado del índice nacional de precios al consumidor </p>
+      <label><input type="radio" name="p12" value="a"> Por Cesantía en edad avanzada</label><br>
+      <label><input type="radio" name="p12" value="b"> Garantizada</label><br>
+      <label><input type="radio" name="p12" value="c"> Por vejez</label><br>
+    <button type="button" onclick="siguiente()">Siguiente pregunta</button>
+  </div>
+
+<div class="pregunta" id="p13">
+      <p>13. Pensión IMSS que se otorga por un accidente o enfermedad no laboral, donde exista la posibilidad de recuperación del 
+asegurado:  </p>
+      <label><input type="radio" name="p13" value="a"> Pensión Mínima Garantizada</label><br>
+      <label><input type="radio" name="p13" value="b"> Pensión Temporal</label><br>
+      <label><input type="radio" name="p13" value="c"> Pensión Definitiva</label><br>
+    <button type="button" onclick="siguiente()">Siguiente pregunta</button>
+  </div>
+
+<div class="pregunta" id="p14">
+      <p>14. La doctora Diana Pérez labora en un hospital privado y en un hospital público de forma simultánea, para un trámite de pensión 
+o de crédito hipotecario puede unificar el tiempo cotizado a un mismo sistema y unificar los saldos de vivienda de los institutos. 
+¿Qué nombre recibe la homologación del sistema de capitalización individual?  </p>
+      <label><input type="radio" name="p14" value="a"> portabilidad de derechos</label><br>
+      <label><input type="radio" name="p14" value="b"> conservación de derechos</label><br>
+      <label><input type="radio" name="p14" value="c"> reconocimiento de derechos</label><br>
+    <button type="button" onclick="siguiente()">Siguiente pregunta</button>
+  </div>
+
+<div class="pregunta" id="p15">
+      <p>15. Son los factores que se consideraron para calcular el Bono de Pensión de los trabajadores ISSSTE que eligieron el sistema de 
+capitalización individual. </p>
+      <label><input type="radio" name="p15" value="a"> Edad del trabajador, años de servicio y salario anual expresado en UDIS</label><br>
+      <label><input type="radio" name="p15" value="b"> Edad del trabajador, antigüedad en el Instituto, expediente de comportamiento laboral y salario anual expresado en UMAS</label><br>
+      <label><input type="radio" name="p15" value="c"> Edad del Trabajador, edad de sus beneficiarios, años cotizados y salario anual expresado en salarios mínimos </label><br>
+    <button type="button" onclick="siguiente()">Siguiente pregunta</button>
+  </div>
+
+<div class="pregunta" id="p16">
+      <p>16. Los trabajadores que eligieron el Sistema de Cuentas individuales recibieron un __________________, emitidos por el gobierno 
+federal y son títulos no negociables, con un valor nominal de _____________________ cada uno. </p>
+      <label><input type="radio" name="p16" value="a"> Incremento al salario - 1 000 a 5 000 UMAS</label><br>
+      <label><input type="radio" name="p16" value="b"> Certificado de regalo - 10 unidades de medida y actualización</label><br>
+      <label><input type="radio" name="p16" value="c"> Bono de Pensión - 100 unidades de inversión</label><br>
+    <button type="button" onclick="siguiente()">Siguiente pregunta</button>
+  </div>
+
+<div class="pregunta" id="p17">
+      <p>17. Son los requisitos para obtener un crédito Infonavit: </p>
+      <label><input type="radio" name="p17" value="a"> SBC superior a 15 veces el salario mínimo y 2 años de cotización continua</label><br>
+      <label><input type="radio" name="p17" value="b"> 1080 puntos y 3 bimestres de cotización continua><br>
+      <label><input type="radio" name="p17" value="c"> 500 puntos y 180 bimestres de cotización continua</label><br>
+    <button type="button" onclick="siguiente()">Siguiente pregunta</button>
+  </div>
+
+<div class="pregunta" id="p18">
+      <p>17. Según la Ley del Seguro Social, ¿Qué se entenderá por Seguro de sobrevivencia? </p>
+      <label><input type="radio" name="p18" value="a"> La modalidad de obtener una pensión fraccionando el monto total o parte de los recursos de la cuenta individual, para lo cual se tomará en cuenta la esperanza de vida de los pensionados, así como los rendimientos previsibles de los saldos.</label><br>
+      <label><input type="radio" name="p18" value="b"> Es un contrato mediante el cual una aseguradora a cambio de recibir todos o parte de los recursos acumulados en la cuenta individual se obliga a pagar periódicamente una pensión durante la vida del pensionado.</label><br>
+      <label><input type="radio" name="p18" value="c"> Aquél que se contrata por los pensionados, por riesgos de trabajo, por invalidez, por cesantía en edad avanzada o por vejez, con cargo a los recursos de la suma asegurada, adicionada a los recursos de la cuenta individual a favor de sus beneficiarios para otorgarles la pensión, ayudas asistenciales y demás prestaciones en dinero previstas en los respectivos seguros, mediante la renta que se les asignará después del fallecimiento del pensionado, hasta la extinción legal de las pensiones.</label><br>
+    <button type="button" onclick="siguiente()">Siguiente pregunta</button>
+  </div>
+
+<div class="pregunta" id="p19">
+      <p>19. Es el documento que las AFORE envían periódicamente a los trabajadores, al domicilio, dirección de correo electrónico o en su 
+caso al domicilio del patrón, dependencia o entidad que tenga registrada. </p>
+      <label><input type="radio" name="p19" value="a"> Estado de Cuenta</label><br>
+      <label><input type="radio" name="p19" value="b"> Estado Financiero</label><br>
+      <label><input type="radio" name="p19" value="c"> Historial de aportaciones</label><br>
+    <button type="button" onclick="siguiente()">Siguiente pregunta</button>
+  </div>
+
+<div class="pregunta" id="p20">
+      <p>20. Es el periodo que abarca el 3er Estado de Cuenta que deberán mandar las Afore a los trabajadores registrados </p>
+      <label><input type="radio" name="p20" value="a"> 1 de enero al 30 de abril </label><br>
+      <label><input type="radio" name="p20" value="b"> 1 de mayo al 31 de agosto</label><br>
+      <label><input type="radio" name="p20" value="c"> 1 de septiembre al 31 de diciembre</label><br>
+    <button type="button" onclick="siguiente()">Siguiente pregunta</button>
+  </div>
+
+</form>
+
+<div class="resultado" id="resultado"></div>
+
+<script>
+  let respuestasCorrectas = {
+     p1: "b",
+        p2: "b",
+        p3: "a",
+        p4: "c",
+        p5: "c",
+        p6: "c",
+        p7: "c",
+        p8: "a",
+        p9: "b",
+        p10: "a",
+        p11: "c",
+        p12: "b",
+        p13: "b",
+        p14: "a",
+        p15: "a",
+        p16: "c",
+        p17: "b",
+        p18: "a",
+        p19: "a",
+        p20: "c"
+  };
+
+  let totalPreguntas = Object.keys(respuestasCorrectas).length;
+  let preguntaActual = 1;
+  let tiempo = 120; // 2 minutos por pregunta
+  let intervalo = null;
+
+  mostrarPregunta(preguntaActual);
+  iniciarTimer();
+
+  function mostrarPregunta(num) {
+    document.querySelectorAll(".pregunta").forEach(p => p.style.display = "none");
+    let bloque = document.getElementById("p" + num);
+    if (bloque) bloque.style.display = "block";
+  }
+
+  function iniciarTimer() {
+    if (intervalo) clearInterval(intervalo);
+    tiempo = 120;
+    document.getElementById("timer").textContent = "Tiempo restante: " + tiempo + " segundos";
+
+    intervalo = setInterval(() => {
+      tiempo--;
+      document.getElementById("timer").textContent = "Tiempo restante: " + tiempo + " segundos";
+
+      if (tiempo <= 0) {
+        siguiente();
+      }
+    }, 1000);
+  }
+
+  function siguiente() {
+    preguntaActual++;
+
+    if (preguntaActual > totalPreguntas) {
+      clearInterval(intervalo);
+      calificar();
+      return;
+    }
+
+    mostrarPregunta(preguntaActual);
+    iniciarTimer();
+  }
+
+  function calificar() {
+    let aciertos = 0;
+
+    for (let pregunta in respuestasCorrectas) {
+      let seleccion = document.querySelector(`input[name="${pregunta}"]:checked`);
+      if (seleccion && seleccion.value === respuestasCorrectas[pregunta]) {
+        aciertos++;
+      }
+    }
+
+    let porcentaje = ((aciertos / totalPreguntas) * 100).toFixed(2);
+    let resultado = document.getElementById("resultado");
+
+    if (porcentaje >= 70) {
+      resultado.style.background = "#c8f7c5"; // verde
+      resultado.style.color = "#1b5e20";
+      resultado.innerHTML = `APROBADO<br>Aciertos: ${aciertos} de ${totalPreguntas}<br>Porcentaje: ${porcentaje}%`;
+    } else {
+      resultado.style.background = "#ffcccc"; // rojo
+      resultado.style.color = "#b71c1c";
+      resultado.innerHTML = `REPROBADO<br>Aciertos: ${aciertos} de ${totalPreguntas}<br>Porcentaje: ${porcentaje}%`;
+    }
+  }
+</script>
+
+</body>
+</html>
